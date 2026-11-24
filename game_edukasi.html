@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Prompt Game Edukasi - KKG KAMLA 2026</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3.3 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Font Awesome 6.5.1 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-purple: #7c3aed;
+            --gradient-main: linear-gradient(135deg, #1e3a8a 0%, #4338ca 50%, #7c3aed 100%);
+            --gradient-btn: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-btn-hover: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+            --bg-soft: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-soft);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Header / Hero Section - Ringkas & Elegan */
+        .hero-header {
+            background: var(--gradient-main);
+            color: white;
+            padding: 1.75rem 0 2.5rem;
+            border-bottom-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .badge-identity {
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        /* Main Container Overlap */
+        .main-wrapper {
+            margin-top: -1.5rem;
+            padding-bottom: 3rem;
+        }
+
+        /* Card Styling */
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Quick Action Bar */
+        .quick-bar {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 0.85rem 1.25rem;
+            border: 1px solid #e0e7ff;
+            box-shadow: 0 4px 15px rgba(67, 56, 202, 0.06);
+        }
+
+        /* Custom Navigation Tabs */
+        .nav-pills-custom {
+            background: #f8fafc;
+            padding: 0.4rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 0.35rem;
+        }
+
+        .nav-pills-custom .nav-link {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-pills-custom .nav-link:hover {
+            color: var(--primary-blue);
+            background: #eff6ff;
+        }
+
+        .nav-pills-custom .nav-link.active {
+            background: var(--gradient-btn);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Form Controls */
+        .form-label {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #1e293b;
+            margin-bottom: 0.35rem;
+        }
+
+        .required-star {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+
+        .form-control, .form-select {
+            border-radius: 11px;
+            border: 1.5px solid #cbd5e1;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3.5px rgba(124, 58, 237, 0.14);
+        }
+
+        /* Game Type Radio Cards */
+        .game-option-input {
+            display: none;
+        }
+
+        .game-option-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.85rem 0.5rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            height: 100%;
+            user-select: none;
+        }
+
+        .game-option-label:hover {
+            border-color: #93c5fd;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .game-option-label i {
+            font-size: 1.35rem;
+            margin-bottom: 0.45rem;
+            color: var(--primary-blue);
+            transition: transform 0.2s ease;
+        }
+
+        .game-option-label span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #334155;
+        }
+
+        .game-option-input:checked + .game-option-label {
+            border-color: var(--primary-purple);
+            background: linear-gradient(145deg, #eff6ff 0%, #f5f3ff 100%);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+        }
+
+        .game-option-input:checked + .game-option-label i {
+            color: var(--primary-purple);
+            transform: scale(1.12);
+        }
+
+        .game-option-input:checked + .game-option-label span {
+            color: #4c1d95;
+            font-weight: 700;
+        }
+
+        /* Feature Toggle Pills */
+        .feature-checkbox {
+            display: none;
+        }
+
+        .feature-label {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.6rem 0.85rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 500;
+            color: #334155;
+            transition: all 0.2s ease;
+            height: 100%;
+            user-select: none;
+        }
+
+        .feature-label:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .feature-label .check-indicator {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 1.5px solid #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: transparent;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .feature-checkbox:checked + .feature-label {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .feature-checkbox:checked + .feature-label .check-indicator {
+            background: var(--gradient-btn);
+            border-color: transparent;
+            color: #ffffff;
+        }
+
+        /* Color Swatch Radio */
+        .color-radio {
+            display: none;
+        }
+
+        .color-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.85rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .color-radio:checked + .color-pill {
+            border-color: var(--primary-purple);
+            background: #f5f3ff;
+            color: #4c1d95;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.15);
+        }
+
+        /* Primary Gradient Button */
+        .btn-gradient {
+            background: var(--gradient-btn);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 0.7rem 1.4rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-gradient:hover {
+            background: var(--gradient-btn-hover);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+        }
+
+        .btn-soft-primary {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-soft-primary:hover {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Result Area Styling */
+        .prompt-output-box {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.87rem;
+            line-height: 1.65;
+            border-radius: 14px;
+            padding: 1.25rem;
+            border: 1px solid #334155;
+            max-height: 460px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .prompt-output-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .prompt-output-box::-webkit-scrollbar-track {
+            background: #1e293b;
+            border-radius: 8px;
+        }
+        .prompt-output-box::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 8px;
+        }
+
+        .summary-chip {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.82rem;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeSlideUp 0.35s ease forwards;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #ffffff;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .hero-header {
+                padding: 1.35rem 0 2.1rem;
+                border-bottom-left-radius: 22px;
+                border-bottom-right-radius: 22px;
+            }
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            .nav-pills-custom .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.82rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER APLIKASI -->
+    <header class="hero-header">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-2">
+                <div class="badge-identity">
+                    <i class="fa-solid fa-graduation-cap text-warning"></i>
+                    <span>KKG KAMLA 2026</span>
+                    <span class="opacity-50">|</span>
+                    <span>Pengembang: <strong>Wahyono, S.Pd.SD.</strong></span>
+                </div>
+                <span class="badge bg-white text-primary rounded-pill px-3 py-1 fw-semibold shadow-sm" style="font-size: 0.76rem;">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Siap Pakai untuk Google Gemini
+                </span>
+            </div>
+            
+            <div class="mt-2">
+                <h1 class="hero-title fw-extrabold mb-1 tracking-tight" style="font-weight: 800;">
+                    <i class="fa-solid fa-gamepad me-2 text-info"></i>GENERATOR GAME EDUKASI
+                </h1>
+                <p class="mb-0 text-white-50 fw-medium" style="font-size: 0.98rem; color: rgba(255,255,255,0.9) !important;">
+                    "Ubah Materi Pembelajaran Menjadi Permainan Interaktif dan Menyenangkan"
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="container main-wrapper">
+        
+        <!-- AREA ALERT VALIDASI / NOTIFIKASI INLINE -->
+        <div id="alertContainer" class="mb-3 d-none animate-fade-in"></div>
+
+        <!-- BAGIAN 1: FORMULIR GENERATOR -->
+        <section id="formSection" class="animate-fade-in">
+            
+            <!-- Toolbar Aksi Cepat (Isi Contoh, Generate Cepat, Reset) -->
+            <div class="quick-bar mb-3 d-flex flex-column flex-lg-row justify-content-between align-items-stretch align-items-lg-center gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-dark" style="font-size: 0.88rem;">Bantuan Pengisian Cepat</div>
+                        <div class="text-muted" style="font-size: 0.78rem;">Pilih contoh materi atau langsung buat prompt otomatis</div>
+                    </div>
+                </div>
+                
+                <div class="d-flex flex-wrap gap-2">
+                    <div class="dropdown">
+                        <button class="btn btn-soft-primary btn-sm dropdown-toggle py-2 px-3" type="button" id="btnContohDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-file-pen me-1"></i> Isi Contoh Materi
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 rounded-3" aria-labelledby="btnContohDropdown">
+                            <li><h6 class="dropdown-header">Pilih Jenjang & Mapel</h6></li>
+                            <li><button class="dropdown-item py-2" type="button" onclick="isiContohMateri('paud')"><i class="fa-solid fa-shapes text-warning me-2"></i>PAUD/TK - Mengenal Hewan & Suara</button></li>
+                            <li><button class="dropdown-item py-2" type="button" onclick="isiContohMateri('sd')"><i class="fa-solid fa-seedling text-success me-2"></i>SD/MI (Kelas 4) - IPAS: Siklus Air</button></li>
+                            <li><button class="dropdown-item py-2" type="button" onclick="isiContohMateri('smp')"><i class="fa-solid fa-calculator text-primary me-2"></i>SMP/MTs (Kelas 7) - Matematika: Aljabar</button></li>
+                            <li><button class="dropdown-item py-2" type="button" onclick="isiContohMateri('sma')"><i class="fa-solid fa-dna text-danger me-2"></i>SMA/MA (Kelas 11) - Biologi: Sistem Pencernaan</button></li>
+                            <li><button class="dropdown-item py-2" type="button" onclick="isiContohMateri('smk')"><i class="fa-solid fa-network-wired text-info me-2"></i>SMK (Kelas 10) - TJKT: Perangkat Jaringan</button></li>
+                        </ul>
+                    </div>
+
+                    <button type="button" id="btnGenerateCepat" class="btn btn-outline-primary btn-sm fw-semibold py-2 px-3 rounded-3" title="Isi otomatis dengan contoh lalu langsung generate prompt">
+                        <i class="fa-solid fa-rocket me-1"></i> Generate Cepat
+                    </button>
+
+                    <button type="button" id="btnResetTop" class="btn btn-outline-secondary btn-sm fw-semibold py-2 px-3 rounded-3">
+                        <i class="fa-solid fa-rotate-left me-1"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kartu Utama Formulir dengan Tab Navigasi Ringkas -->
+            <div class="app-card p-3 p-md-4">
+                <form id="gameGeneratorForm" novalidate>
+                    
+                    <!-- Navigasi Tab Step-by-Step agar ringkas & minim scroll -->
+                    <ul class="nav nav-pills-custom mb-4" id="formTabs" role="tablist">
+                        <li class="nav-item flex-fill" role="presentation">
+                            <button class="nav-link active w-100 justify-content-center" id="tab-identitas-btn" data-bs-toggle="pill" data-bs-target="#tab-identitas" type="button" role="tab" aria-controls="tab-identitas" aria-selected="true">
+                                <span class="badge bg-white text-primary rounded-circle">1</span>
+                                <span>Identitas & Materi</span>
+                            </button>
+                        </li>
+                        <li class="nav-item flex-fill" role="presentation">
+                            <button class="nav-link w-100 justify-content-center" id="tab-jenis-btn" data-bs-toggle="pill" data-bs-target="#tab-jenis" type="button" role="tab" aria-controls="tab-jenis" aria-selected="false">
+                                <span class="badge bg-white text-primary rounded-circle">2</span>
+                                <span>Jenis Game (15)</span>
+                            </button>
+                        </li>
+                        <li class="nav-item flex-fill" role="presentation">
+                            <button class="nav-link w-100 justify-content-center" id="tab-desain-btn" data-bs-toggle="pill" data-bs-target="#tab-desain" type="button" role="tab" aria-controls="tab-desain" aria-selected="false">
+                                <span class="badge bg-white text-primary rounded-circle">3</span>
+                                <span>Desain, Fitur & Level</span>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Konten Tab -->
+                    <div class="tab-content" id="formTabsContent">
+                        
+                        <!-- TAB 1: FORMULIR IDENTITAS PEMBELAJARAN -->
+                        <div class="tab-pane fade show active" id="tab-identitas" role="tabpanel" aria-labelledby="tab-identitas-btn">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="namaGuru" class="form-label">1. Nama Guru <span class="required-star">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0 rounded-start-3"><i class="fa-solid fa-user-tie text-primary"></i></span>
+                                        <input type="text" class="form-control border-start-0" id="namaGuru" placeholder="Contoh: Wahyono, S.Pd.SD." required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="jenjang" class="form-label">2. Jenjang Pendidikan <span class="required-star">*</span></label>
+                                    <select class="form-select" id="jenjang" required>
+                                        <option value="" selected disabled>-- Pilih Jenjang --</option>
+                                        <option value="PAUD">PAUD</option>
+                                        <option value="TK">TK</option>
+                                        <option value="SD/MI">SD/MI</option>
+                                        <option value="SMP/MTs">SMP/MTs</option>
+                                        <option value="SMA/MA">SMA/MA</option>
+                                        <option value="SMK">SMK</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="kelas" class="form-label">3. Kelas / Fase <span class="required-star">*</span></label>
+                                    <input type="text" class="form-control" id="kelas" placeholder="Contoh: Kelas 4 / Fase B" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="mataPelajaran" class="form-label">4. Mata Pelajaran <span class="required-star">*</span></label>
+                                    <input type="text" class="form-control" id="mataPelajaran" placeholder="Contoh: IPAS / Matematika" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="semester" class="form-label">5. Semester <span class="required-star">*</span></label>
+                                    <select class="form-select" id="semester" required>
+                                        <option value="Semester 1 (Ganjil)">Semester 1 (Ganjil)</option>
+                                        <option value="Semester 2 (Genap)">Semester 2 (Genap)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="materiPembelajaran" class="form-label">6. Materi Pembelajaran <span class="required-star">*</span></label>
+                                    <input type="text" class="form-control" id="materiPembelajaran" placeholder="Contoh: Siklus Air dan Manfaatnya" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-1 mb-1">
+                                        <label for="tujuanPembelajaran" class="form-label mb-0">7. Tujuan Pembelajaran (TP) <span class="required-star">*</span></label>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Mode Tujuan Pembelajaran">
+                                            <input type="radio" class="btn-check" name="modeTP" id="modeTPManual" value="manual" autocomplete="off" checked>
+                                            <label class="btn btn-outline-primary py-0 px-2" style="font-size: 0.76rem;" for="modeTPManual">Manual</label>
+
+                                            <input type="radio" class="btn-check" name="modeTP" id="modeTPOtomatis" value="otomatis" autocomplete="off">
+                                            <label class="btn btn-outline-primary py-0 px-2" style="font-size: 0.76rem;" for="modeTPOtomatis"><i class="fa-solid fa-wand-magic-sparkles me-1"></i>Otomatis</label>
+                                        </div>
+                                    </div>
+                                    <div id="boxTPManual">
+                                        <textarea class="form-control" id="tujuanPembelajaran" rows="2" placeholder="Contoh: Peserta didik mampu mengidentifikasi tahapan siklus air (evaporasi, kondensasi, presipitasi) dengan tepat." required></textarea>
+                                    </div>
+                                    <div id="boxTPOtomatis" class="d-none p-2 px-3 rounded-3 border border-primary border-opacity-25 bg-primary bg-opacity-10 text-primary" style="font-size: 0.82rem;">
+                                        <i class="fa-solid fa-robot me-1"></i> <strong>Mode Otomatis Aktif:</strong> <span id="previewTPOtomatis">TP akan disusun otomatis oleh sistem sesuai jenjang, kelas, dan materi pembelajaran.</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-1 mb-1">
+                                        <label for="deskripsiMateri" class="form-label mb-0">8. Deskripsi Singkat Materi <span class="required-star">*</span></label>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Mode Deskripsi Materi">
+                                            <input type="radio" class="btn-check" name="modeDeskripsi" id="modeDeskripsiManual" value="manual" autocomplete="off" checked>
+                                            <label class="btn btn-outline-primary py-0 px-2" style="font-size: 0.76rem;" for="modeDeskripsiManual">Manual</label>
+
+                                            <input type="radio" class="btn-check" name="modeDeskripsi" id="modeDeskripsiOtomatis" value="otomatis" autocomplete="off">
+                                            <label class="btn btn-outline-primary py-0 px-2" style="font-size: 0.76rem;" for="modeDeskripsiOtomatis"><i class="fa-solid fa-wand-magic-sparkles me-1"></i>Otomatis</label>
+                                        </div>
+                                    </div>
+                                    <div id="boxDeskripsiManual">
+                                        <textarea class="form-control" id="deskripsiMateri" rows="2" placeholder="Tuliskan poin-poin inti materi yang akan dijadikan soal atau tantangan dalam game..." required></textarea>
+                                    </div>
+                                    <div id="boxDeskripsiOtomatis" class="d-none p-2 px-3 rounded-3 border border-primary border-opacity-25 bg-primary bg-opacity-10 text-primary" style="font-size: 0.82rem;">
+                                        <i class="fa-solid fa-robot me-1"></i> <strong>Mode Otomatis Aktif:</strong> <span id="previewDeskripsiOtomatis">Ringkasan materi akan disusun otomatis menyesuaikan jenjang, kelas, dan topik materi.</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="jumlahSoal" class="form-label">9. Jumlah Soal atau Tantangan <span class="required-star">*</span></label>
+                                    <input type="number" class="form-control" id="jumlahSoal" min="1" max="50" value="10" placeholder="Contoh: 10" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="durasiPermainan" class="form-label">10. Durasi Permainan <span class="required-star">*</span></label>
+                                    <select class="form-select" id="durasiPermainan" required>
+                                        <option value="5 Menit (Cepat)">5 Menit (Cepat)</option>
+                                        <option value="10 Menit (Standar)" selected>10 Menit (Standar)</option>
+                                        <option value="15 Menit (Menengah)">15 Menit (Menengah)</option>
+                                        <option value="20 Menit (Mendalam)">20 Menit (Mendalam)</option>
+                                        <option value="30 Menit (Eksplorasi Penuh)">30 Menit (Eksplorasi Penuh)</option>
+                                        <option value="Tanpa Batas Waktu (Santai)">Tanpa Batas Waktu (Santai)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4 pt-2 border-top">
+                                <button type="button" class="btn btn-soft-primary px-4 py-2" onclick="pindahTab('tab-jenis-btn')">
+                                    Lanjut ke Jenis Game <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: PILIHAN JENIS GAME -->
+                        <div class="tab-pane fade" id="tab-jenis" role="tabpanel" aria-labelledby="tab-jenis-btn">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Pilih Jenis Permainan Edukasi</h6>
+                                    <small class="text-muted">Pilih mekanik game yang paling sesuai atau biarkan Gemini memilihkan secara otomatis</small>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">15 Pilihan Tersedia</span>
+                            </div>
+
+                            <div class="row g-2 g-md-3" id="gameTypeContainer">
+                                <!-- Diisi dinamis atau statis dengan 15 pilihan -->
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-20-percent">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_otomatis" value="Game Otomatis (Rekomendasi Terbaik Gemini Sesuai Materi)" checked>
+                                    <label class="game-option-label border-primary" for="game_otomatis">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-warning"></i>
+                                        <span>Game Otomatis<br><small class="text-primary fw-normal">(Rekomendasi AI)</small></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_1" value="Quiz Challenge">
+                                    <label class="game-option-label" for="game_1">
+                                        <i class="fa-solid fa-circle-question"></i>
+                                        <span>1. Quiz Challenge</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_2" value="Tebak Gambar">
+                                    <label class="game-option-label" for="game_2">
+                                        <i class="fa-solid fa-image"></i>
+                                        <span>2. Tebak Gambar</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_3" value="Drag and Drop">
+                                    <label class="game-option-label" for="game_3">
+                                        <i class="fa-solid fa-hand-pointer"></i>
+                                        <span>3. Drag and Drop</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_4" value="Memory Card">
+                                    <label class="game-option-label" for="game_4">
+                                        <i class="fa-solid fa-clone"></i>
+                                        <span>4. Memory Card</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_5" value="Matching Game">
+                                    <label class="game-option-label" for="game_5">
+                                        <i class="fa-solid fa-link"></i>
+                                        <span>5. Matching Game</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_6" value="Susun Kata">
+                                    <label class="game-option-label" for="game_6">
+                                        <i class="fa-solid fa-arrow-down-a-z"></i>
+                                        <span>6. Susun Kata</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_7" value="Teka-Teki Silang">
+                                    <label class="game-option-label" for="game_7">
+                                        <i class="fa-solid fa-table-cells"></i>
+                                        <span>7. Teka-Teki Silang</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_8" value="Benar atau Salah">
+                                    <label class="game-option-label" for="game_8">
+                                        <i class="fa-solid fa-check-double"></i>
+                                        <span>8. Benar atau Salah</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_9" value="Puzzle Edukasi">
+                                    <label class="game-option-label" for="game_9">
+                                        <i class="fa-solid fa-puzzle-piece"></i>
+                                        <span>9. Puzzle Edukasi</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_10" value="Maze atau Labirin">
+                                    <label class="game-option-label" for="game_10">
+                                        <i class="fa-solid fa-route"></i>
+                                        <span>10. Maze / Labirin</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_11" value="Petualangan Edukasi">
+                                    <label class="game-option-label" for="game_11">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>11. Petualangan Edukasi</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_12" value="Ular Tangga Edukasi">
+                                    <label class="game-option-label" for="game_12">
+                                        <i class="fa-solid fa-dice"></i>
+                                        <span>12. Ular Tangga Edukasi</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_13" value="Game Misi dan Tantangan">
+                                    <label class="game-option-label" for="game_13">
+                                        <i class="fa-solid fa-trophy"></i>
+                                        <span>13. Misi & Tantangan</span>
+                                    </label>
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <input type="radio" class="game-option-input" name="jenisGame" id="game_14" value="Game Simulasi">
+                                    <label class="game-option-label" for="game_14">
+                                        <i class="fa-solid fa-flask-vial"></i>
+                                        <span>14. Game Simulasi</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4 pt-2 border-top">
+                                <button type="button" class="btn btn-outline-secondary px-3 py-2 rounded-3" onclick="pindahTab('tab-identitas-btn')">
+                                    <i class="fa-solid fa-arrow-left me-1"></i> Sebelumnya
+                                </button>
+                                <button type="button" class="btn btn-soft-primary px-4 py-2" onclick="pindahTab('tab-desain-btn')">
+                                    Lanjut ke Desain & Fitur <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: DESAIN, FITUR & TINGKAT KESULITAN -->
+                        <div class="tab-pane fade" id="tab-desain" role="tabpanel" aria-labelledby="tab-desain-btn">
+                            <div class="row g-4">
+                                <!-- Desain Visual & Tingkat Kesulitan -->
+                                <div class="col-md-6">
+                                    <label for="temaVisual" class="form-label"><i class="fa-solid fa-palette text-primary me-1"></i> Tema Visual Game</label>
+                                    <select class="form-select" id="temaVisual">
+                                        <option value="Ceria untuk Anak SD">Ceria untuk Anak SD</option>
+                                        <option value="Kartun 2D" selected>Kartun 2D</option>
+                                        <option value="Kartun 3D">Kartun 3D</option>
+                                        <option value="Anime">Anime</option>
+                                        <option value="Dunia Fantasi">Dunia Fantasi</option>
+                                        <option value="Petualangan">Petualangan</option>
+                                        <option value="Luar Angkasa">Luar Angkasa</option>
+                                        <option value="Alam dan Lingkungan">Alam dan Lingkungan</option>
+                                        <option value="Dunia Bawah Laut">Dunia Bawah Laut</option>
+                                        <option value="Minimalis Modern">Minimalis Modern</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="tingkatKesulitan" class="form-label"><i class="fa-solid fa-gauge-high text-purple me-1" style="color: var(--primary-purple);"></i> Tingkat Kesulitan</label>
+                                    <select class="form-select" id="tingkatKesulitan">
+                                        <option value="Otomatis sesuai jenjang dan kelas" selected>Otomatis sesuai jenjang dan kelas</option>
+                                        <option value="Mudah">Mudah</option>
+                                        <option value="Sedang">Sedang</option>
+                                        <option value="Sulit">Sulit</option>
+                                        <option value="Bertingkat dari mudah ke sulit">Bertingkat dari mudah ke sulit</option>
+                                    </select>
+                                </div>
+
+                                <!-- Pilihan Warna Utama -->
+                                <div class="col-12">
+                                    <label class="form-label d-block"><i class="fa-solid fa-droplet text-primary me-1"></i> Nuansa Warna Utama</label>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_auto" value="Bebas/Otomatis (Menyesuaikan Tema)" checked>
+                                            <label class="color-pill" for="warna_auto"><span class="color-dot" style="background: linear-gradient(135deg, #2563eb, #ec4899, #f59e0b);"></span> Bebas/Otomatis</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_biru" value="Biru">
+                                            <label class="color-pill" for="warna_biru"><span class="color-dot" style="background: #2563eb;"></span> Biru</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_hijau" value="Hijau">
+                                            <label class="color-pill" for="warna_hijau"><span class="color-dot" style="background: #16a34a;"></span> Hijau</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_ungu" value="Ungu">
+                                            <label class="color-pill" for="warna_ungu"><span class="color-dot" style="background: #7c3aed;"></span> Ungu</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_oranye" value="Oranye">
+                                            <label class="color-pill" for="warna_oranye"><span class="color-dot" style="background: #f97316;"></span> Oranye</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_pink" value="Pink">
+                                            <label class="color-pill" for="warna_pink"><span class="color-dot" style="background: #ec4899;"></span> Pink</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="color-radio" name="warnaGame" id="warna_pastel" value="Pastel">
+                                            <label class="color-pill" for="warna_pastel"><span class="color-dot" style="background: #fbcfe8;"></span> Pastel</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pilihan Fitur Game -->
+                                <div class="col-12">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                                        <label class="form-label mb-0"><i class="fa-solid fa-sliders text-primary me-1"></i> Fitur Interaktif Game (Centang sesuai kebutuhan)</label>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <button type="button" class="btn btn-outline-primary" onclick="toggleSemuaFitur(true)">Pilih Semua</button>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="toggleSemuaFitur(false)">Kosongkan</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-2" id="fiturContainer">
+                                        <!-- 13 Fitur Game sesuai spesifikasi -->
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_1" value="Animasi interaktif" checked>
+                                            <label class="feature-label" for="fitur_1"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Animasi interaktif</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_2" value="Efek suara (Web Audio API / tanpa file eksternal)" checked>
+                                            <label class="feature-label" for="fitur_2"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Efek suara</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_3" value="Musik latar (dengan tombol mute/unmute)">
+                                            <label class="feature-label" for="fitur_3"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Musik latar</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_4" value="Karakter pemain (maskot/avatar SVG)" checked>
+                                            <label class="feature-label" for="fitur_4"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Karakter pemain</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_5" value="Skor otomatis real-time" checked>
+                                            <label class="feature-label" for="fitur_5"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Skor otomatis</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_6" value="Timer / penghitung waktu" checked>
+                                            <label class="feature-label" for="fitur_6"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Timer</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_7" value="Nyawa atau kesempatan bermain" checked>
+                                            <label class="feature-label" for="fitur_7"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Nyawa / kesempatan</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_8" value="Level permainan bertahap">
+                                            <label class="feature-label" for="fitur_8"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Level permainan</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_9" value="Papan peringkat (Leaderboard lokal)">
+                                            <label class="feature-label" for="fitur_9"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Papan peringkat</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_10" value="Umpan balik langsung jawaban benar dan salah" checked>
+                                            <label class="feature-label" for="fitur_10"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Umpan balik jawaban</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_11" value="Pembahasan jawaban edukatif" checked>
+                                            <label class="feature-label" for="fitur_11"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Pembahasan jawaban</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_12" value="Halaman hasil akhir & evaluasi nilai" checked>
+                                            <label class="feature-label" for="fitur_12"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Halaman hasil akhir</label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <input type="checkbox" class="feature-checkbox" id="fitur_13" value="Tombol main ulang (Reset Game)" checked>
+                                            <label class="feature-label" for="fitur_13"><span class="check-indicator"><i class="fa-solid fa-check"></i></span> Tombol main ulang</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4 pt-2 border-top">
+                                <button type="button" class="btn btn-outline-secondary px-3 py-2 rounded-3" onclick="pindahTab('tab-jenis-btn')">
+                                    <i class="fa-solid fa-arrow-left me-1"></i> Sebelumnya
+                                </button>
+                                <span class="text-muted small align-self-center d-none d-sm-inline">Siap untuk membuat prompt? Klik tombol di bawah!</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- TOMBOL AKSI UTAMA FORMULIR -->
+                    <div class="mt-4 pt-3 border-top d-flex flex-column sm:flex-row flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-2">
+                        <button type="button" id="btnResetForm" class="btn btn-outline-danger rounded-3 py-2 px-3 fw-semibold">
+                            <i class="fa-solid fa-trash-can me-1"></i> RESET FORM
+                        </button>
+                        
+                        <button type="submit" id="btnGeneratePrompt" class="btn btn-gradient py-2 px-4 fs-6">
+                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i> GENERATE PROMPT
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: HASIL GENERATOR PROMPT -->
+        <section id="resultSection" class="d-none animate-fade-in">
+            <div class="app-card p-3 p-md-4">
+                
+                <!-- Header Hasil -->
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 pb-3 mb-3 border-bottom">
+                    <div>
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 rounded-pill px-3 py-1 mb-1">
+                            <i class="fa-solid fa-circle-check me-1"></i> Prompt Berhasil Dibuat
+                        </span>
+                        <h2 id="resultTitle" class="h4 fw-bold text-dark mb-0">PROMPT GAME EDUKASI INTERAKTIF</h2>
+                    </div>
+                    <button type="button" id="btnKembaliForm" class="btn btn-outline-primary rounded-3 fw-semibold px-3 py-2">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Formulir
+                    </button>
+                </div>
+
+                <!-- Ringkasan Konfigurasi Game -->
+                <div class="mb-3">
+                    <h6 class="fw-bold text-muted text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                        <i class="fa-solid fa-sliders me-1"></i> Ringkasan Konfigurasi Game
+                    </h6>
+                    <div id="configSummaryGrid" class="row g-2">
+                        <!-- Diisi otomatis melalui JS -->
+                    </div>
+                </div>
+
+                <!-- Petunjuk Singkat Penggunaan -->
+                <div class="alert alert-info border-0 rounded-3 d-flex align-items-center gap-2 py-2 px-3 mb-3" style="background-color: #eff6ff; color: #1e40af; font-size: 0.85rem;">
+                    <i class="fa-solid fa-circle-info fs-5"></i>
+                    <div>
+                        <strong>Cara Pakai:</strong> Klik <strong>SALIN PROMPT</strong> di bawah ini, lalu buka <strong>Google Gemini</strong> (<a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="fw-bold text-decoration-underline">gemini.google.com</a>), tempel (Paste), dan kirim. Gunakan fitur <em>Canvas / Preview</em> di Gemini untuk langsung memainkan game-nya!
+                    </div>
+                </div>
+
+                <!-- Kotak Teks Prompt Lengkap -->
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="generatedPromptText" class="fw-bold text-dark small mb-0">
+                            <i class="fa-solid fa-terminal text-primary me-1"></i> Prompt Lengkap Siap Tempel ke Google Gemini:
+                        </label>
+                        <span id="charCountBadge" class="badge bg-secondary rounded-pill">0 Karakter</span>
+                    </div>
+                    <textarea id="generatedPromptText" class="prompt-output-box w-100" rows="16" readonly></textarea>
+                </div>
+
+                <!-- Tombol Aksi Hasil -->
+                <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center pt-2">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" id="btnSalinPrompt" class="btn btn-gradient px-4 py-2">
+                            <i class="fa-solid fa-copy me-1"></i> SALIN PROMPT
+                        </button>
+                        <button type="button" id="btnSalinKeGemini" class="btn btn-primary fw-bold rounded-3 px-4 py-2 shadow-sm" style="background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%); border: none;">
+                            <i class="fa-solid fa-wand-magic-sparkles me-1"></i> SALIN &amp; KE GEMINI AI <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
+                        </button>
+                        <button type="button" id="btnDownloadTxt" class="btn btn-success fw-semibold rounded-3 px-3 py-2">
+                            <i class="fa-solid fa-download me-1"></i> DOWNLOAD TXT
+                        </button>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" id="btnGenerateUlang" class="btn btn-soft-primary px-3 py-2">
+                            <i class="fa-solid fa-arrows-rotate me-1"></i> GENERATE ULANG
+                        </button>
+                        <button type="button" id="btnResetFromResult" class="btn btn-outline-danger rounded-3 fw-semibold px-3 py-2">
+                            <i class="fa-solid fa-rotate-left me-1"></i> RESET FORM
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- TOAST NOTIFIKASI (SALIN / SUKSES) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+        <div id="liveToast" class="toast align-items-center text-bg-dark border-0 rounded-4 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2 py-3 px-3">
+                    <i id="toastIcon" class="fa-solid fa-circle-check text-success fs-5"></i>
+                    <span id="toastMessage" class="fw-medium">Prompt berhasil disalin ke clipboard!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-3 mt-auto">
+        <div class="container text-center">
+            <div class="fw-semibold text-dark">GENERATOR GAME EDUKASI &bull; KKG KAMLA 2026</div>
+            <div class="small text-muted">Dikembangkan oleh <strong>Wahyono, S.Pd.SD.</strong> untuk Transformasi Pembelajaran Digital Indonesia</div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        /**
+         * DATA CONTOH MATERI UNTUK MEMBANTU GURU (BERBAGAI JENJANG)
+         */
+        const CONTOH_MATERI = {
+            paud: {
+                namaGuru: "Ibu Siti Aminah, S.Pd.AUD.",
+                jenjang: "PAUD",
+                kelas: "Kelompok B (Usia 5-6 Tahun)",
+                mataPelajaran: "Pengembangan Kognitif & Bahasa",
+                semester: "Semester 1 (Ganjil)",
+                materiPembelajaran: "Mengenal Hewan Darat, Air, dan Udara",
+                tujuanPembelajaran: "Anak mampu mengelompokkan hewan berdasarkan tempat hidupnya (darat, air, udara) dengan gembira.",
+                deskripsiMateri: "Pengenalan berbagai hewan seperti sapi, ayam, ikan, lumba-lumba, burung, dan kupu-kupu beserta tempat tinggal dan ciri fisiknya yang sederhana.",
+                jumlahSoal: 6,
+                durasiPermainan: "Tanpa Batas Waktu (Santai)",
+                jenisGame: "Drag and Drop",
+                temaVisual: "Ceria untuk Anak SD",
+                warna: "Pastel",
+                kesulitan: "Mudah"
+            },
+            sd: {
+                namaGuru: "Wahyono, S.Pd.SD.",
+                jenjang: "SD/MI",
+                kelas: "Kelas 4 / Fase B",
+                mataPelajaran: "IPAS (Ilmu Pengetahuan Alam dan Sosial)",
+                semester: "Semester 2 (Genap)",
+                materiPembelajaran: "Siklus Air dan Pelestarian Sumber Daya Air",
+                tujuanPembelajaran: "Peserta didik mampu mengurutkan tahapan siklus air (evaporasi, kondensasi, presipitasi, infiltrasi) serta menganalisis cara menjaga ketersediaan air bersih.",
+                deskripsiMateri: "Proses perputaran air secara terus-menerus dari bumi ke atmosfer dan kembali ke bumi melalui penguapan air laut oleh sinar matahari, pembentukan awan, turunnya hujan, dan penyerapan air tanah.",
+                jumlahSoal: 10,
+                durasiPermainan: "10 Menit (Standar)",
+                jenisGame: "Petualangan Edukasi",
+                temaVisual: "Alam dan Lingkungan",
+                warna: "Biru",
+                kesulitan: "Bertingkat dari mudah ke sulit"
+            },
+            smp: {
+                namaGuru: "Budi Santoso, M.Pd.",
+                jenjang: "SMP/MTs",
+                kelas: "Kelas 7 / Fase D",
+                mataPelajaran: "Matematika",
+                semester: "Semester 1 (Ganjil)",
+                materiPembelajaran: "Bentuk Aljabar dan Operasi Hitungnya",
+                tujuanPembelajaran: "Peserta didik mampu mengidentifikasi unsur-unsur bentuk aljabar (variabel, koefisien, konstanta, suku) dan menyelesaikan operasi penjumlahan serta pengurangan bentuk aljabar.",
+                deskripsiMateri: "Konsep variabel sebagai pengganti bilangan yang belum diketahui, penyederhanaan suku-suku sejenis, dan penerapan aljabar dalam pemecahan masalah kontekstual sehari-hari.",
+                jumlahSoal: 10,
+                durasiPermainan: "15 Menit (Menengah)",
+                jenisGame: "Game Misi dan Tantangan",
+                temaVisual: "Luar Angkasa",
+                warna: "Ungu",
+                kesulitan: "Sedang"
+            },
+            sma: {
+                namaGuru: "Dra. Ratna Dewi, M.Si.",
+                jenjang: "SMA/MA",
+                kelas: "Kelas 11 / Fase F",
+                mataPelajaran: "Biologi",
+                semester: "Semester 1 (Ganjil)",
+                materiPembelajaran: "Sistem Pencernaan Manusia dan Enzim Pencernaan",
+                tujuanPembelajaran: "Peserta didik mampu menganalisis struktur organ pencernaan, fungsi enzim pencernaan (ptialin, pepsin, renin, amilase, tripsin, lipase), serta kelainan pada sistem pencernaan.",
+                deskripsiMateri: "Proses pencernaan mekanik dan kimiawi mulai dari rongga mulut, kerongkongan, lambung, usus halus (duodenum, jejunum, ileum), usus besar hingga anus beserta peran kelenjar pencernaan.",
+                jumlahSoal: 12,
+                durasiPermainan: "15 Menit (Menengah)",
+                jenisGame: "Game Simulasi",
+                temaVisual: "Minimalis Modern",
+                warna: "Hijau",
+                kesulitan: "Sulit"
+            },
+            smk: {
+                namaGuru: "Ahmad Fauzi, S.Kom.",
+                jenjang: "SMK",
+                kelas: "Kelas 10 / Fase E",
+                mataPelajaran: "Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi",
+                semester: "Semester 2 (Genap)",
+                materiPembelajaran: "Perangkat Keras Jaringan Komputer dan Topologi",
+                tujuanPembelajaran: "Peserta didik mampu menentukan fungsi perangkat jaringan (Router, Switch, Access Point, Modem, Kabel UTP) dan memilih topologi jaringan yang tepat sesuai kebutuhan.",
+                deskripsiMateri: "Pengenalan fungsi perangkat aktif dan pasif jaringan, susunan warna kabel straight/crossover, serta karakteristik topologi Star, Bus, Ring, dan Mesh.",
+                jumlahSoal: 10,
+                durasiPermainan: "10 Menit (Standar)",
+                jenisGame: "Matching Game",
+                temaVisual: "Minimalis Modern",
+                warna: "Biru",
+                kesulitan: "Otomatis sesuai jenjang dan kelas"
+            }
+        };
+
+        // Inisialisasi Toast Bootstrap
+        let toastInstance = null;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const toastEl = document.getElementById("liveToast");
+            if (toastEl) {
+                toastInstance = new bootstrap.Toast(toastEl, { delay: 3200 });
+            }
+
+            // Event Listener Form Submit
+            const form = document.getElementById("gameGeneratorForm");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                prosesGeneratePrompt();
+            });
+
+            // Event Listener Tombol-Tombol Tambahan
+            document.getElementById("btnGenerateCepat").addEventListener("click", handleGenerateCepat);
+            document.getElementById("btnResetTop").addEventListener("click", resetSemuaForm);
+            document.getElementById("btnResetForm").addEventListener("click", resetSemuaForm);
+            document.getElementById("btnResetFromResult").addEventListener("click", function () {
+                resetSemuaForm();
+                kembaliKeFormulir();
+            });
+            document.getElementById("btnKembaliForm").addEventListener("click", kembaliKeFormulir);
+            document.getElementById("btnSalinPrompt").addEventListener("click", salinPromptKeClipboard);
+            document.getElementById("btnSalinKeGemini").addEventListener("click", salinDanBukaGemini);
+            document.getElementById("btnGenerateUlang").addEventListener("click", function () {
+                prosesGeneratePrompt(true);
+            });
+            document.getElementById("btnDownloadTxt").addEventListener("click", downloadPromptTxt);
+
+            // Event Listener Toggle Mode TP & Deskripsi (Manual vs Otomatis)
+            document.querySelectorAll('input[name="modeTP"]').forEach(radio => {
+                radio.addEventListener("change", aturTampilanModeTP);
+            });
+            document.querySelectorAll('input[name="modeDeskripsi"]').forEach(radio => {
+                radio.addEventListener("change", aturTampilanModeDeskripsi);
+            });
+
+            // Perbarui pratinjau otomatis secara real-time saat jenjang, kelas, mapel, atau materi berubah
+            ["jenjang", "kelas", "mataPelajaran", "materiPembelajaran"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener("input", perbaruiPratinjauOtomatis);
+                    el.addEventListener("change", perbaruiPratinjauOtomatis);
+                }
+            });
+        });
+
+        /**
+         * Menghasilkan teks Tujuan Pembelajaran otomatis sesuai jenjang, kelas, dan materi
+         */
+        function buatTPOtomatis(jenjang, kelas, mapel, materi) {
+            const j = jenjang || "sesuai jenjang";
+            const k = kelas || "kelas terkait";
+            const m = materi || "materi pembelajaran ini";
+            const mp = mapel ? `pada mata pelajaran ${mapel}` : "";
+
+            if (jenjang === "PAUD" || jenjang === "TK") {
+                return `Anak usia dini (${j} - ${k}) mampu mengenal, menyebutkan, dan mengelompokkan konsep dasar tentang "${m}" secara menyenangkan melalui aktivitas bermain interaktif.`;
+            } else if (jenjang === "SD/MI") {
+                return `Peserta didik jenjang ${j} (${k}) mampu memahami konsep dasar, mengidentifikasi ciri-ciri, serta menerapkan pengetahuan tentang "${m}" ${mp} dalam kehidupan sehari-hari dengan tepat.`;
+            } else if (jenjang === "SMP/MTs") {
+                return `Peserta didik jenjang ${j} (${k}) mampu menjelaskan konsep, menganalisis hubungan antarunsur, dan memecahkan permasalahan kontekstual terkait materi "${m}" ${mp} secara akurat.`;
+            } else if (jenjang === "SMA/MA" || jenjang === "SMK") {
+                return `Peserta didik jenjang ${j} (${k}) mampu menganalisis, mengevaluasi, dan mengaplikasikan konsep mendalam serta studi kasus pada materi "${m}" ${mp} secara kritis dan sistematis.`;
+            }
+            return `Peserta didik mampu memahami, mengidentifikasi, dan menguasai kompetensi inti pada materi "${m}" sesuai tingkat perkembangan ${j} (${k}).`;
+        }
+
+        /**
+         * Menghasilkan teks Deskripsi Singkat Materi otomatis sesuai jenjang, kelas, dan materi
+         */
+        function buatDeskripsiOtomatis(jenjang, kelas, mapel, materi) {
+            const j = jenjang || "peserta didik";
+            const k = kelas || "kelas yang dipilih";
+            const m = materi || "topik pembelajaran";
+            const mp = mapel || "mata pelajaran terkait";
+
+            return `[Disusun Otomatis oleh Sistem] Cakupan inti materi "${m}" untuk mata pelajaran ${mp} jenjang ${j} (${k}), meliputi pengenalan konsep utama, istilah-istilah penting, contoh penerapan nyata, serta latihan pemecahan masalah yang disesuaikan dengan tingkat kognitif dan kurikuler siswa ${k}. (Instruksi untuk Gemini: Uraikan dan kembangkan detail materi "${m}" ini secara lengkap dan akurat secara akademis sesuai kurikulum ${j} ${k}).`;
+        }
+
+        /**
+         * Mengatur visibilitas kotak Manual vs Otomatis untuk TP
+         */
+        function aturTampilanModeTP() {
+            const mode = document.querySelector('input[name="modeTP"]:checked').value;
+            const boxManual = document.getElementById("boxTPManual");
+            const boxOtomatis = document.getElementById("boxTPOtomatis");
+
+            if (mode === "otomatis") {
+                boxManual.classList.add("d-none");
+                boxOtomatis.classList.remove("d-none");
+                perbaruiPratinjauOtomatis();
+            } else {
+                boxManual.classList.remove("d-none");
+                boxOtomatis.classList.add("d-none");
+            }
+        }
+
+        /**
+         * Mengatur visibilitas kotak Manual vs Otomatis untuk Deskripsi Materi
+         */
+        function aturTampilanModeDeskripsi() {
+            const mode = document.querySelector('input[name="modeDeskripsi"]:checked').value;
+            const boxManual = document.getElementById("boxDeskripsiManual");
+            const boxOtomatis = document.getElementById("boxDeskripsiOtomatis");
+
+            if (mode === "otomatis") {
+                boxManual.classList.add("d-none");
+                boxOtomatis.classList.remove("d-none");
+                perbaruiPratinjauOtomatis();
+            } else {
+                boxManual.classList.remove("d-none");
+                boxOtomatis.classList.add("d-none");
+            }
+        }
+
+        /**
+         * Memperbarui teks pratinjau pada kotak Otomatis saat input materi/kelas diketik
+         */
+        function perbaruiPratinjauOtomatis() {
+            const jenjang = document.getElementById("jenjang").value;
+            const kelas = document.getElementById("kelas").value.trim();
+            const mapel = document.getElementById("mataPelajaran").value.trim();
+            const materi = document.getElementById("materiPembelajaran").value.trim();
+
+            const tpOtomatis = buatTPOtomatis(jenjang, kelas, mapel, materi);
+            const deskOtomatis = buatDeskripsiOtomatis(jenjang, kelas, mapel, materi);
+
+            document.getElementById("previewTPOtomatis").textContent = tpOtomatis;
+            document.getElementById("previewDeskripsiOtomatis").textContent = deskOtomatis;
+            document.getElementById("tujuanPembelajaran").value = tpOtomatis;
+            document.getElementById("deskripsiMateri").value = deskOtomatis;
+        }
+
+        /**
+         * Menampilkan notifikasi toast di pojok kanan bawah
+         */
+        function tampilkanNotifikasi(pesan, tipe = "success") {
+            const toastMessage = document.getElementById("toastMessage");
+            const toastIcon = document.getElementById("toastIcon");
+
+            if (toastMessage) toastMessage.textContent = pesan;
+            if (toastIcon) {
+                toastIcon.className = "fs-5 fa-solid " + (
+                    tipe === "success" ? "fa-circle-check text-success" :
+                    tipe === "warning" ? "fa-triangle-exclamation text-warning" :
+                    "fa-circle-info text-info"
+                );
+            }
+
+            if (toastInstance) {
+                toastInstance.show();
+            }
+        }
+
+        /**
+         * Menampilkan peringatan validasi di bagian atas formulir
+         */
+        function tampilkanPeringatanInline(daftarPesan) {
+            const alertContainer = document.getElementById("alertContainer");
+            let listHtml = daftarPesan.map(item => `<li>${item}</li>`).join("");
+
+            alertContainer.innerHTML = `
+                <div class="alert alert-danger alert-dismissible fade show rounded-4 shadow-sm border-0 mb-0" role="alert">
+                    <div class="d-flex align-items-start gap-2">
+                        <i class="fa-solid fa-circle-exclamation fs-5 mt-1"></i>
+                        <div>
+                            <strong>Mohon lengkapi data wajib berikut sebelum membuat prompt:</strong>
+                            <ul class="mb-0 mt-1 ps-3 small">${listHtml}</ul>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+            alertContainer.classList.remove("d-none");
+            alertContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function sembunyikanPeringatanInline() {
+            const alertContainer = document.getElementById("alertContainer");
+            alertContainer.classList.add("d-none");
+            alertContainer.innerHTML = "";
+        }
+
+        /**
+         * Navigasi antar tab form
+         */
+        function pindahTab(targetTabButtonId) {
+            const tabTriggerEl = document.getElementById(targetTabButtonId);
+            if (tabTriggerEl) {
+                const tab = new bootstrap.Tab(tabTriggerEl);
+                tab.show();
+                window.scrollTo({ top: document.querySelector(".main-wrapper").offsetTop - 15, behavior: "smooth" });
+            }
+        }
+
+        /**
+         * Centang / Hapus centang semua fitur game
+         */
+        function toggleSemuaFitur(status) {
+            const checkboxes = document.querySelectorAll("#fiturContainer .feature-checkbox");
+            checkboxes.forEach(cb => {
+                cb.checked = status;
+            });
+            tampilkanNotifikasi(status ? "Semua fitur game dipilih." : "Semua pilihan fitur dikosongkan.", "info");
+        }
+
+        /**
+         * Mengisi form otomatis dengan contoh materi
+         */
+        function isiContohMateri(kunciJenjang) {
+            const data = CONTOH_MATERI[kunciJenjang] || CONTOH_MATERI.sd;
+
+            document.getElementById("namaGuru").value = data.namaGuru;
+            document.getElementById("jenjang").value = data.jenjang;
+            document.getElementById("kelas").value = data.kelas;
+            document.getElementById("mataPelajaran").value = data.mataPelajaran;
+            document.getElementById("semester").value = data.semester;
+            document.getElementById("materiPembelajaran").value = data.materiPembelajaran;
+
+            // Kembalikan ke mode manual agar contoh teks terlihat jelas & bisa diedit
+            document.getElementById("modeTPManual").checked = true;
+            document.getElementById("modeDeskripsiManual").checked = true;
+            aturTampilanModeTP();
+            aturTampilanModeDeskripsi();
+
+            document.getElementById("tujuanPembelajaran").value = data.tujuanPembelajaran;
+            document.getElementById("deskripsiMateri").value = data.deskripsiMateri;
+            document.getElementById("jumlahSoal").value = data.jumlahSoal;
+            document.getElementById("durasiPermainan").value = data.durasiPermainan;
+
+            // Set jenis game
+            const radioGames = document.querySelectorAll('input[name="jenisGame"]');
+            radioGames.forEach(r => {
+                r.checked = (r.value === data.jenisGame);
+            });
+
+            // Set tema visual & kesulitan
+            document.getElementById("temaVisual").value = data.temaVisual;
+            document.getElementById("tingkatKesulitan").value = data.kesulitan;
+
+            // Set warna
+            const radioColors = document.querySelectorAll('input[name="warnaGame"]');
+            radioColors.forEach(c => {
+                c.checked = (c.value === data.warna);
+            });
+
+            sembunyikanPeringatanInline();
+            tampilkanNotifikasi(`Contoh materi ${data.jenjang} (${data.mataPelajaran}) berhasil diisikan!`, "success");
+        }
+
+        /**
+         * Generate Cepat: Jika form wajib masih kosong, isi contoh SD lalu langsung generate
+         */
+        function handleGenerateCepat() {
+            const materi = document.getElementById("materiPembelajaran").value.trim();
+            const namaGuru = document.getElementById("namaGuru").value.trim();
+            const jenjang = document.getElementById("jenjang").value;
+
+            if (!materi || !namaGuru || !jenjang) {
+                isiContohMateri("sd");
+            }
+            prosesGeneratePrompt();
+        }
+
+        /**
+         * Validasi dan pengumpulan seluruh data formulir
+         */
+        function ambilDanValidasiData() {
+            const namaGuru = document.getElementById("namaGuru").value.trim();
+            const jenjang = document.getElementById("jenjang").value;
+            const kelas = document.getElementById("kelas").value.trim();
+            const mataPelajaran = document.getElementById("mataPelajaran").value.trim();
+            const semester = document.getElementById("semester").value;
+            const materiPembelajaran = document.getElementById("materiPembelajaran").value.trim();
+
+            const modeTP = document.querySelector('input[name="modeTP"]:checked').value;
+            const modeDeskripsi = document.querySelector('input[name="modeDeskripsi"]:checked').value;
+
+            const tujuanPembelajaran = modeTP === "otomatis"
+                ? buatTPOtomatis(jenjang, kelas, mataPelajaran, materiPembelajaran)
+                : document.getElementById("tujuanPembelajaran").value.trim();
+
+            const deskripsiMateri = modeDeskripsi === "otomatis"
+                ? buatDeskripsiOtomatis(jenjang, kelas, mataPelajaran, materiPembelajaran)
+                : document.getElementById("deskripsiMateri").value.trim();
+
+            const jumlahSoal = document.getElementById("jumlahSoal").value.trim();
+            const durasiPermainan = document.getElementById("durasiPermainan").value;
+
+            const errors = [];
+            if (!namaGuru) errors.push("Nama Guru belum diisi.");
+            if (!jenjang) errors.push("Jenjang Pendidikan belum dipilih.");
+            if (!kelas) errors.push("Kelas / Fase belum diisi.");
+            if (!mataPelajaran) errors.push("Mata Pelajaran belum diisi.");
+            if (!materiPembelajaran) errors.push("Materi Pembelajaran belum diisi.");
+            if (modeTP === "manual" && !tujuanPembelajaran) errors.push("Tujuan Pembelajaran belum diisi (atau pilih mode Otomatis).");
+            if (modeDeskripsi === "manual" && !deskripsiMateri) errors.push("Deskripsi Singkat Materi belum diisi (atau pilih mode Otomatis).");
+            if (!jumlahSoal || parseInt(jumlahSoal) < 1) errors.push("Jumlah Soal atau Tantangan harus minimal 1.");
+
+            if (errors.length > 0) {
+                pindahTab("tab-identitas-btn");
+                tampilkanPeringatanInline(errors);
+                return null;
+            }
+
+            sembunyikanPeringatanInline();
+
+            // Ambil Jenis Game terpilih
+            const jenisGameEl = document.querySelector('input[name="jenisGame"]:checked');
+            const jenisGame = jenisGameEl ? jenisGameEl.value : "Game Otomatis (Rekomendasi Terbaik Gemini Sesuai Materi)";
+
+            // Ambil Tema Visual, Warna, dan Tingkat Kesulitan
+            const temaVisual = document.getElementById("temaVisual").value;
+            const warnaEl = document.querySelector('input[name="warnaGame"]:checked');
+            const warnaGame = warnaEl ? warnaEl.value : "Bebas/Otomatis";
+            const tingkatKesulitan = document.getElementById("tingkatKesulitan").value;
+
+            // Ambil Fitur yang dicentang dan tidak dicentang
+            const semuaCheckboxFitur = document.querySelectorAll("#fiturContainer .feature-checkbox");
+            const fiturDipilih = [];
+            const fiturTidakDipilih = [];
+
+            semuaCheckboxFitur.forEach(cb => {
+                if (cb.checked) {
+                    fiturDipilih.push(cb.value);
+                } else {
+                    fiturTidakDipilih.push(cb.value);
+                }
+            });
+
+            return {
+                namaGuru,
+                jenjang,
+                kelas,
+                mataPelajaran,
+                semester,
+                materiPembelajaran,
+                tujuanPembelajaran,
+                deskripsiMateri,
+                jumlahSoal,
+                durasiPermainan,
+                jenisGame,
+                temaVisual,
+                warnaGame,
+                tingkatKesulitan,
+                fiturDipilih,
+                fiturTidakDipilih
+            };
+        }
+
+        /**
+         * Menyusun teks Prompt Profesional untuk Google Gemini
+         */
+        function susunTeksPrompt(data, variasiSeed = false) {
+            const variasiIntro = variasiSeed
+                ? "Bertindaklah sebagai Senior Educational Game Developer, UI/UX Designer Pendidikan, dan Pakar Pedagogi Digital yang sangat kreatif."
+                : "Bertindaklah sebagai Game Developer Profesional, UI/UX Designer, dan Ahli Pembelajaran Digital (Game-Based Learning Specialist).";
+
+            const daftarFiturWajib = data.fiturDipilih.length > 0
+                ? data.fiturDipilih.map((f, idx) => `   ${idx + 1}. ${f}`).join("\n")
+                : "   - Mekanik inti permainan interaktif yang bersih dan fokus pada pengerjaan soal.";
+
+            const catatanFiturOpsional = data.fiturTidakDipilih.length > 0
+                ? `\nCatatan Fitur: Fitur berikut TIDAK diminta sebagai fitur wajib sehingga tidak perlu dipaksakan agar game tetap fokus: ${data.fiturTidakDipilih.join(", ")}.`
+                : "";
+
+            const instruksiJenisGame = data.jenisGame.includes("Game Otomatis")
+                ? `Pilihan Jenis Game: ${data.jenisGame}. Analisislah karakteristik materi "${data.materiPembelajaran}" dan usia peserta didik jenjang ${data.jenjang} (${data.kelas}), lalu pilih dan bangun mekanik game edukasi interaktif yang PALING EFEKTIF, seru, dan sesuai secara pedagogis.`
+                : `Jenis Game Wajib: ${data.jenisGame}. Bangun mekanik permainan interaktif "${data.jenisGame}" secara utuh dan menyenangkan.`;
+
+            return `${variasiIntro}
+
+Tugas Anda adalah merancang dan membangun sebuah **GAME EDUKASI INTERAKTIF BERBASIS WEB** yang siap dimainkan langsung oleh siswa berdasarkan identitas pembelajaran berikut:
+
+====================================================================
+A. IDENTITAS & MATERI PEMBELAJARAN
+====================================================================
+- Nama Guru Penyusun : ${data.namaGuru}
+- Jenjang Pendidikan   : ${data.jenjang}
+- Kelas / Fase         : ${data.kelas}
+- Mata Pelajaran       : ${data.mataPelajaran}
+- Semester             : ${data.semester}
+- Materi Pembelajaran  : ${data.materiPembelajaran}
+- Tujuan Pembelajaran  : ${data.tujuanPembelajaran}
+- Ringkasan Materi     : ${data.deskripsiMateri}
+- Jumlah Soal/Tantangan: ${data.jumlahSoal} soal/tantangan
+- Estimasi Durasi      : ${data.durasiPermainan}
+- Tingkat Kesulitan    : ${data.tingkatKesulitan}
+
+====================================================================
+B. KONSEP & DESAIN VISUAL GAME
+====================================================================
+- ${instruksiJenisGame}
+- Tema Visual          : ${data.temaVisual}
+- Nuansa Warna Utama   : ${data.warnaGame}
+- Gaya Antarmuka       : Modern, ramah anak/peserta didik jenjang ${data.jenjang}, tipografi sangat jelas, ikon menarik, dan layout responsif untuk HP, tablet, maupun laptop.
+
+====================================================================
+C. FITUR INTERAKTIF YANG HARUS TERSEDIA
+====================================================================
+Pastikan game dilengkapi fitur-fitur berikut dan semuanya berfungsi dengan baik:
+${daftarFiturWajib}${catatanFiturOpsional}
+
+====================================================================
+D. ALUR PERMAINAN & PEDAGOGI
+====================================================================
+1. Halaman Awal (Start Screen): Menampilkan judul game yang menarik berdasarkan materi "${data.materiPembelajaran}", identitas guru (${data.namaGuru}) & kelas (${data.kelas}), petunjuk cara bermain yang singkat & jelas, serta tombol "MULAI BERMAIN".
+2. Konten Akademis Akurat: Buatlah tepat ${data.jumlahSoal} soal/tantangan yang bervariasi, kontekstual, sesuai dengan tujuan pembelajaran, bebas dari kesalahan konsep, dan menggunakan bahasa Indonesia yang baik serta sesuai tingkat perkembangan usia siswa ${data.jenjang}.
+3. Interaktivitas Nyata: Setiap pilihan jawaban, geseran (drag), klik kartu, atau langkah permainan harus memberikan respons visual dan umpan balik edukatif secara langsung.
+4. Perhitungan Skor & Evaluasi: Hitung skor secara otomatis (skala 0-100), tampilkan layar hasil akhir yang apresiatif, ringkasan evaluasi belajar, serta tombol "MAIN LAGI" untuk mengulang permainan dari awal dengan lancar.
+
+====================================================================
+E. STANDAR TEKNIS WAJIB (SANGAT PENTING)
+====================================================================
+1. SATU FILE LENGKAP: Tuliskan seluruh kode dalam SATU file HTML lengkap (index.html) yang menggabungkan HTML5, CSS3, dan JavaScript murni di dalamnya.
+2. MANDIRI & TANPA DEPENDENSI BERAT: Game harus dapat dimainkan langsung di browser secara offline/standalone tanpa membutuhkan server, database, login, maupun API Key.
+3. ASET RINGAN & MANDIRI: Untuk gambar, karakter, ikon, maupun latar belakang, gunakan ilustrasi SVG inline, Emoji, atau CSS art agar tidak pernah terjadi gambar rusak (broken image). Jika menggunakan efek suara/musik, gunakan Web Audio API bawaan browser tanpa tautan file audio eksternal.
+4. BUKAN MOCKUP / KODE UTUH: Dilarang keras memberikan kerangka kosong, placeholder ("// tulis kode di sini"), atau tombol hiasan yang tidak berfungsi. Semua tombol navigasi, soal, penghitung skor, dan logika menang/kalah harus 100% selesai, bebas error, dan siap dimainkan!`;
+        }
+
+        /**
+         * Menjalankan proses generate prompt dan menampilkan hasil
+         */
+        function prosesGeneratePrompt(isRegenerate = false) {
+            const data = ambilDanValidasiData();
+            if (!data) return;
+
+            const promptLengkap = susunTeksPrompt(data, isRegenerate);
+
+            // Update Judul Hasil
+            document.getElementById("resultTitle").textContent = `PROMPT GAME: ${data.materiPembelajaran.toUpperCase()}`;
+
+            // Render Ringkasan Konfigurasi
+            const summaryGrid = document.getElementById("configSummaryGrid");
+            summaryGrid.innerHTML = `
+                <div class="col-6 col-md-3">
+                    <div class="summary-chip h-100">
+                        <div class="text-muted small">Jenjang & Kelas</div>
+                        <div class="fw-bold text-dark">${escapeHtml(data.jenjang)} - ${escapeHtml(data.kelas)}</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="summary-chip h-100">
+                        <div class="text-muted small">Mata Pelajaran</div>
+                        <div class="fw-bold text-dark">${escapeHtml(data.mataPelajaran)}</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="summary-chip h-100">
+                        <div class="text-muted small">Jenis Game</div>
+                        <div class="fw-bold text-primary">${escapeHtml(data.jenisGame.split(" (")[0])}</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="summary-chip h-100">
+                        <div class="text-muted small">Target & Tema</div>
+                        <div class="fw-bold text-dark">${escapeHtml(data.jumlahSoal)} Soal &bull; ${escapeHtml(data.temaVisual)}</div>
+                    </div>
+                </div>
+            `;
+
+            // Isi Textarea Hasil
+            const promptTextarea = document.getElementById("generatedPromptText");
+            promptTextarea.value = promptLengkap;
+            document.getElementById("charCountBadge").textContent = `${promptLengkap.length} Karakter`;
+
+            // Tampilkan bagian hasil & sembunyikan form
+            document.getElementById("formSection").classList.add("d-none");
+            const resultSection = document.getElementById("resultSection");
+            resultSection.classList.remove("d-none");
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            tampilkanNotifikasi(
+                isRegenerate ? "Prompt berhasil diperbarui ulang!" : "Prompt game edukasi siap digunakan!",
+                "success"
+            );
+        }
+
+        /**
+         * Kembali ke tampilan formulir
+         */
+        function kembaliKeFormulir() {
+            document.getElementById("resultSection").classList.add("d-none");
+            document.getElementById("formSection").classList.remove("d-none");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        /**
+         * Reset seluruh input formulir ke kondisi awal
+         */
+        function resetSemuaForm() {
+            const form = document.getElementById("gameGeneratorForm");
+            form.reset();
+            aturTampilanModeTP();
+            aturTampilanModeDeskripsi();
+            sembunyikanPeringatanInline();
+            pindahTab("tab-identitas-btn");
+            tampilkanNotifikasi("Formulir telah dikembalikan ke pengaturan awal.", "info");
+        }
+
+        /**
+         * Salin Prompt ke Clipboard dengan fallback kompatibel iframe & browser modern
+         */
+        function salinPromptKeClipboard(tampilkanNotifDefault = true) {
+            const textarea = document.getElementById("generatedPromptText");
+            if (!textarea || !textarea.value) return false;
+
+            textarea.focus();
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+
+            let berhasil = false;
+            try {
+                berhasil = document.execCommand("copy");
+            } catch (err) {
+                berhasil = false;
+            }
+
+            if (berhasil) {
+                if (tampilkanNotifDefault) {
+                    tampilkanNotifikasi("Prompt berhasil disalin! Silakan tempel (Paste) di Google Gemini.", "success");
+                }
+                return true;
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textarea.value)
+                    .then(() => {
+                        if (tampilkanNotifDefault) {
+                            tampilkanNotifikasi("Prompt berhasil disalin! Silakan tempel (Paste) di Google Gemini.", "success");
+                        }
+                    })
+                    .catch(() => {
+                        tampilkanNotifikasi("Silakan tekan Ctrl+C pada kotak prompt untuk menyalin.", "warning");
+                    });
+                return true;
+            } else {
+                tampilkanNotifikasi("Silakan tekan Ctrl+C pada kotak prompt untuk menyalin.", "warning");
+                return false;
+            }
+        }
+
+        /**
+         * Menyalin prompt sekaligus langsung membuka Google Gemini di tab baru
+         */
+        function salinDanBukaGemini() {
+            salinPromptKeClipboard(false);
+            tampilkanNotifikasi("Prompt tersalin! Membuka Google Gemini AI — silakan tempel (Ctrl+V) di sana.", "success");
+            window.open("https://gemini.google.com/app", "_blank", "noopener,noreferrer");
+        }
+
+        /**
+         * Mengunduh hasil prompt dalam format file .txt
+         */
+        function downloadPromptTxt() {
+            const teksPrompt = document.getElementById("generatedPromptText").value;
+            if (!teksPrompt) return;
+
+            const materiRaw = document.getElementById("materiPembelajaran").value.trim() || "Game_Edukasi";
+            const namaFileBersih = materiRaw
+                .replace(/[^a-zA-Z0-9\s-]/g, "")
+                .trim()
+                .replace(/\s+/g, "_")
+                .substring(0, 40);
+
+            const namaFile = `Prompt_Game_${namaFileBersih || "Edukasi"}.txt`;
+            const blob = new Blob([teksPrompt], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = namaFile;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            tampilkanNotifikasi(`File "${namaFile}" berhasil diunduh!`, "success");
+        }
+
+        /**
+         * Utilitas sanitasi HTML untuk ringkasan konfigurasi
+         */
+        function escapeHtml(str) {
+            const div = document.createElement("div");
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
